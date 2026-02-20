@@ -1,0 +1,2128 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BGMI E-Sports | Circle Bhind 2026</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@400;500;600;700&family=Press+Start+2P&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #0a0a0f;
+            font-family: 'Rajdhani', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a0a0f;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #f5a623, #ff6b35);
+            border-radius: 10px;
+        }
+
+        /* Animated Background Particles */
+        .bg-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #f5a623;
+            border-radius: 50%;
+            animation: floatParticle linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes floatParticle {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 0.5; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+        }
+
+        .particle:nth-child(1) { left: 5%; animation-duration: 8s; animation-delay: 0s; width: 2px; height: 2px; background: #ff4444; }
+        .particle:nth-child(2) { left: 15%; animation-duration: 12s; animation-delay: 1s; width: 4px; height: 4px; background: #f5a623; }
+        .particle:nth-child(3) { left: 25%; animation-duration: 9s; animation-delay: 2s; }
+        .particle:nth-child(4) { left: 35%; animation-duration: 11s; animation-delay: 0.5s; background: #00e5ff; }
+        .particle:nth-child(5) { left: 45%; animation-duration: 7s; animation-delay: 3s; width: 5px; height: 5px; }
+        .particle:nth-child(6) { left: 55%; animation-duration: 10s; animation-delay: 1.5s; background: #ff4444; }
+        .particle:nth-child(7) { left: 65%; animation-duration: 8s; animation-delay: 2.5s; width: 2px; height: 2px; }
+        .particle:nth-child(8) { left: 75%; animation-duration: 13s; animation-delay: 0.8s; background: #00e5ff; }
+        .particle:nth-child(9) { left: 85%; animation-duration: 9s; animation-delay: 3.5s; width: 4px; height: 4px; }
+        .particle:nth-child(10) { left: 95%; animation-duration: 11s; animation-delay: 1.2s; }
+        .particle:nth-child(11) { left: 10%; animation-duration: 14s; animation-delay: 4s; background: #ff4444; width: 3px; height: 3px; }
+        .particle:nth-child(12) { left: 30%; animation-duration: 6s; animation-delay: 0.3s; background: #f5a623; }
+        .particle:nth-child(13) { left: 50%; animation-duration: 10s; animation-delay: 2.8s; width: 2px; height: 2px; background: #00e5ff; }
+        .particle:nth-child(14) { left: 70%; animation-duration: 8s; animation-delay: 1.8s; }
+        .particle:nth-child(15) { left: 90%; animation-duration: 12s; animation-delay: 3.2s; background: #ff4444; width: 4px; height: 4px; }
+
+        /* Grid Lines Background */
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background-image:
+                linear-gradient(rgba(245, 166, 35, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(245, 166, 35, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        /* Main Container */
+        .main-container {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px 15px 40px;
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            padding: 30px 20px;
+            position: relative;
+        }
+
+        .logo-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .logo-container img {
+            width: 130px;
+            height: 130px;
+            object-fit: contain;
+            border-radius: 50%;
+            border: 3px solid #f5a623;
+            padding: 5px;
+            background: rgba(245, 166, 35, 0.1);
+            box-shadow:
+                0 0 20px rgba(245, 166, 35, 0.3),
+                0 0 40px rgba(245, 166, 35, 0.1),
+                inset 0 0 20px rgba(245, 166, 35, 0.1);
+            animation: logoPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes logoPulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(245, 166, 35, 0.3), 0 0 40px rgba(245, 166, 35, 0.1); }
+            50% { box-shadow: 0 0 30px rgba(245, 166, 35, 0.5), 0 0 60px rgba(245, 166, 35, 0.2), 0 0 80px rgba(245, 166, 35, 0.1); }
+        }
+
+        .logo-ring {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px solid transparent;
+            border-top-color: #f5a623;
+            border-radius: 50%;
+            animation: spinRing 3s linear infinite;
+        }
+
+        .logo-ring:nth-child(2) {
+            top: -18px;
+            left: -18px;
+            right: -18px;
+            bottom: -18px;
+            border-top-color: transparent;
+            border-right-color: #00e5ff;
+            animation-duration: 4s;
+            animation-direction: reverse;
+        }
+
+        @keyframes spinRing {
+            to { transform: rotate(360deg); }
+        }
+
+        .title-main {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.8em;
+            font-weight: 900;
+            background: linear-gradient(135deg, #f5a623, #ff6b35, #f5a623, #ffd700);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 4s ease infinite;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: none;
+            filter: drop-shadow(0 0 10px rgba(245, 166, 35, 0.3));
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .title-sub {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.6em;
+            color: #00e5ff;
+            font-weight: 600;
+            letter-spacing: 8px;
+            margin-top: 5px;
+            text-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
+        }
+
+        .title-year {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1.2em;
+            color: #ff4444;
+            margin-top: 10px;
+            letter-spacing: 12px;
+            animation: yearBlink 2s ease-in-out infinite;
+        }
+
+        @keyframes yearBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .divider {
+            width: 80%;
+            height: 2px;
+            margin: 25px auto;
+            background: linear-gradient(90deg, transparent, #f5a623, #00e5ff, #f5a623, transparent);
+            position: relative;
+        }
+
+        .divider::before {
+            content: '⬥';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #f5a623;
+            font-size: 18px;
+            background: #0a0a0f;
+            padding: 0 15px;
+        }
+
+        .tournament-badge {
+            display: inline-block;
+            padding: 8px 30px;
+            border: 2px solid #f5a623;
+            color: #f5a623;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.85em;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-top: 5px;
+            position: relative;
+            background: rgba(245, 166, 35, 0.05);
+        }
+
+        .tournament-badge::before,
+        .tournament-badge::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-color: #f5a623;
+            border-style: solid;
+        }
+
+        .tournament-badge::before {
+            top: -2px;
+            left: -2px;
+            border-width: 2px 0 0 2px;
+        }
+
+        .tournament-badge::after {
+            bottom: -2px;
+            right: -2px;
+            border-width: 0 2px 2px 0;
+        }
+
+        /* Form Section */
+        .form-container {
+            background: linear-gradient(145deg, rgba(15, 15, 25, 0.95), rgba(10, 10, 20, 0.98));
+            border: 1px solid rgba(245, 166, 35, 0.2);
+            border-radius: 15px;
+            padding: 40px 35px;
+            margin-top: 10px;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #f5a623, transparent);
+            animation: borderScan 4s linear infinite;
+        }
+
+        .form-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00e5ff, transparent);
+            animation: borderScan 4s linear infinite 2s;
+        }
+
+        @keyframes borderScan {
+            to { left: 100%; right: auto; }
+        }
+
+        .form-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3em;
+            color: #f5a623;
+            text-align: center;
+            margin-bottom: 30px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .form-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #f5a623, #ff6b35);
+            border-radius: 2px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+            position: relative;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+            color: #aaa;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .form-group label .required {
+            color: #ff4444;
+            margin-left: 3px;
+        }
+
+        .form-group label .icon {
+            margin-right: 6px;
+            font-size: 1em;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px solid rgba(245, 166, 35, 0.15);
+            border-radius: 10px;
+            color: #fff;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.05em;
+            font-weight: 500;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            outline: none;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23f5a623' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            padding-right: 40px;
+        }
+
+        .form-group select option {
+            background: #1a1a2e;
+            color: #fff;
+            padding: 10px;
+        }
+
+        .form-group input:hover,
+        .form-group select:hover {
+            border-color: rgba(245, 166, 35, 0.4);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #f5a623;
+            background: rgba(245, 166, 35, 0.05);
+            box-shadow:
+                0 0 15px rgba(245, 166, 35, 0.1),
+                0 0 30px rgba(245, 166, 35, 0.05),
+                inset 0 0 15px rgba(245, 166, 35, 0.03);
+        }
+
+        .form-group input:focus + .input-line,
+        .form-group select:focus + .input-line {
+            width: 100%;
+        }
+
+        .input-line {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #f5a623, #ff6b35);
+            transition: width 0.4s ease;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.2);
+            font-weight: 400;
+        }
+
+        /* Submit Button */
+        .submit-section {
+            text-align: center;
+            margin-top: 35px;
+        }
+
+        .submit-btn {
+            position: relative;
+            padding: 16px 60px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1em;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #0a0a0f;
+            background: linear-gradient(135deg, #f5a623, #ffd700, #ff6b35);
+            background-size: 200% 200%;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            overflow: hidden;
+            animation: btnGradient 3s ease infinite;
+        }
+
+        @keyframes btnGradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, #f5a623, #ffd700, #ff6b35, #f5a623);
+            background-size: 400% 400%;
+            border-radius: 50px;
+            z-index: -1;
+            animation: btnGradient 3s ease infinite;
+            filter: blur(8px);
+            opacity: 0.5;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow:
+                0 10px 30px rgba(245, 166, 35, 0.4),
+                0 0 50px rgba(245, 166, 35, 0.2);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        .submit-btn .btn-text {
+            position: relative;
+            z-index: 1;
+        }
+
+        .submit-btn .btn-shine {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .submit-btn:hover .btn-shine {
+            left: 100%;
+        }
+
+        /* Generic Overlay */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .overlay.active {
+            display: flex;
+            animation: fadeInOverlay 0.5s ease;
+        }
+
+        @keyframes fadeInOverlay {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .success-container {
+            text-align: center;
+            padding: 40px;
+            max-width: 500px;
+        }
+
+        /* PhonePe-style Success Animation */
+        .success-checkmark {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 35px;
+            position: relative;
+        }
+
+        .success-checkmark .check-icon {
+            width: 140px;
+            height: 140px;
+            position: relative;
+            border-radius: 50%;
+            box-sizing: content-box;
+        }
+
+        .check-icon .icon-circle {
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            box-sizing: border-box;
+        }
+
+        /* Circle Drawing Animation */
+        .circle-svg {
+            width: 140px;
+            height: 140px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: rotate(-90deg);
+        }
+
+        .circle-svg circle {
+            fill: none;
+            stroke: #4caf50;
+            stroke-width: 4;
+            stroke-linecap: round;
+            cx: 70;
+            cy: 70;
+            r: 66;
+            stroke-dasharray: 415;
+            stroke-dashoffset: 415;
+            animation: drawCircle 0.8s ease-out 0.3s forwards;
+        }
+
+        @keyframes drawCircle {
+            to { stroke-dashoffset: 0; }
+        }
+
+        /* Green fill pulse */
+        .circle-fill {
+            position: absolute;
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(76, 175, 80, 0.15), transparent);
+            top: 5px;
+            left: 5px;
+            transform: scale(0);
+            animation: fillPulse 0.6s ease-out 0.8s forwards;
+        }
+
+        @keyframes fillPulse {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Checkmark */
+        .checkmark-svg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+        }
+
+        .checkmark-svg polyline {
+            fill: none;
+            stroke: #4caf50;
+            stroke-width: 5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-dasharray: 80;
+            stroke-dashoffset: 80;
+            animation: drawCheck 0.5s ease-out 1s forwards;
+        }
+
+        @keyframes drawCheck {
+            to { stroke-dashoffset: 0; }
+        }
+
+        /* Ripple effect */
+        .ripple {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 140px;
+            height: 140px;
+            transform: translate(-50%, -50%) scale(0);
+            border-radius: 50%;
+            border: 3px solid rgba(76, 175, 80, 0.4);
+            animation: rippleEffect 1.5s ease-out 1.2s forwards;
+            opacity: 0;
+        }
+
+        .ripple:nth-child(5) {
+            animation-delay: 1.5s;
+        }
+
+        .ripple:nth-child(6) {
+            animation-delay: 1.8s;
+        }
+
+        @keyframes rippleEffect {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
+        }
+
+        /* Sparkle particles */
+        .sparkle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            opacity: 0;
+        }
+
+        .sparkle:nth-child(7) { top: -10px; left: 50%; background: #ffd700; animation: sparkleAnim 0.6s ease-out 1.3s forwards; }
+        .sparkle:nth-child(8) { top: 20%; right: -10px; background: #4caf50; animation: sparkleAnim 0.6s ease-out 1.4s forwards; }
+        .sparkle:nth-child(9) { bottom: -10px; left: 40%; background: #f5a623; animation: sparkleAnim 0.6s ease-out 1.5s forwards; }
+        .sparkle:nth-child(10) { top: 20%; left: -10px; background: #00e5ff; animation: sparkleAnim 0.6s ease-out 1.6s forwards; }
+        .sparkle:nth-child(11) { top: -5px; right: 10px; background: #ff4444; animation: sparkleAnim 0.6s ease-out 1.35s forwards; }
+        .sparkle:nth-child(12) { bottom: 10px; right: -5px; background: #ffd700; animation: sparkleAnim 0.6s ease-out 1.55s forwards; }
+        .sparkle:nth-child(13) { bottom: -5px; right: 30%; background: #4caf50; animation: sparkleAnim 0.6s ease-out 1.45s forwards; }
+        .sparkle:nth-child(14) { top: 50%; left: -15px; background: #f5a623; animation: sparkleAnim 0.6s ease-out 1.65s forwards; }
+
+        @keyframes sparkleAnim {
+            0% { transform: scale(0); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 1; }
+            100% { transform: scale(0); opacity: 0; }
+        }
+
+        /* Success Text */
+        .success-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2em;
+            font-weight: 900;
+            background: linear-gradient(135deg, #4caf50, #81c784, #a5d6a7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: textReveal 0.6s ease-out 1.6s forwards;
+        }
+
+        .success-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5em;
+            color: #f5a623;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: textReveal 0.6s ease-out 1.8s forwards;
+        }
+
+        .session-id-container {
+            background: rgba(245, 166, 35, 0.1);
+            border: 1px solid rgba(245, 166, 35, 0.3);
+            border-radius: 10px;
+            padding: 15px 25px;
+            margin: 20px auto;
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: textReveal 0.6s ease-out 2s forwards;
+        }
+
+        .session-label {
+            font-size: 0.85em;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        .session-id {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3em;
+            color: #00e5ff;
+            letter-spacing: 3px;
+            font-weight: 700;
+        }
+
+        .success-message {
+            font-size: 1.2em;
+            color: #ccc;
+            font-weight: 500;
+            line-height: 1.8;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: textReveal 0.6s ease-out 2.2s forwards;
+        }
+
+        .success-message span {
+            color: #f5a623;
+            font-weight: 700;
+        }
+
+        .good-luck {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1em;
+            color: #00e5ff;
+            margin-top: 15px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: textReveal 0.6s ease-out 2.4s forwards;
+            text-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
+        }
+
+        @keyframes textReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Join Teams Button */
+        .join-teams-btn {
+            margin-top: 25px;
+            padding: 14px 40px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1em;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #0a0a0f;
+            background: linear-gradient(135deg, #00e5ff, #00bcd4);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: textReveal 0.6s ease-out 2.6s forwards;
+        }
+
+        .join-teams-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 229, 255, 0.4);
+        }
+
+        /* Teams Modal */
+        .teams-modal {
+            background: linear-gradient(145deg, rgba(15, 15, 25, 0.98), rgba(10, 10, 20, 0.99));
+            border: 1px solid rgba(245, 166, 35, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .teams-modal-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4em;
+            color: #f5a623;
+            text-align: center;
+            margin-bottom: 25px;
+            letter-spacing: 3px;
+        }
+
+        .teams-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .team-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(245, 166, 35, 0.1);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .team-item:hover {
+            border-color: rgba(245, 166, 35, 0.4);
+            background: rgba(245, 166, 35, 0.05);
+            transform: translateX(5px);
+        }
+
+        .team-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .team-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #f5a623, #ff6b35);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+        }
+
+        .team-details h4 {
+            color: #fff;
+            font-size: 1em;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .team-details p {
+            color: #888;
+            font-size: 0.85em;
+        }
+
+        .team-lock {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #ff4444;
+            font-size: 0.9em;
+        }
+
+        .lock-icon {
+            font-size: 1.2em;
+        }
+
+        .close-modal-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 35px;
+            height: 35px;
+            background: rgba(255, 68, 68, 0.2);
+            border: 1px solid rgba(255, 68, 68, 0.3);
+            border-radius: 50%;
+            color: #ff4444;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-modal-btn:hover {
+            background: rgba(255, 68, 68, 0.4);
+            transform: rotate(90deg);
+        }
+
+        /* Password Modal */
+        .password-modal {
+            background: linear-gradient(145deg, rgba(15, 15, 25, 0.98), rgba(10, 10, 20, 0.99));
+            border: 1px solid rgba(245, 166, 35, 0.2);
+            border-radius: 20px;
+            padding: 40px 30px;
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+
+        .password-modal h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: #f5a623;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .password-modal .team-name-display {
+            color: #00e5ff;
+            font-size: 1.1em;
+            margin-bottom: 25px;
+        }
+
+        .password-input-group {
+            margin-bottom: 20px;
+        }
+
+        .password-input-group label {
+            display: block;
+            color: #888;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .password-input-group input {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(245, 166, 35, 0.2);
+            border-radius: 10px;
+            color: #fff;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.1em;
+            text-align: center;
+            letter-spacing: 2px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .password-input-group input:focus {
+            border-color: #f5a623;
+            background: rgba(245, 166, 35, 0.05);
+        }
+
+        .error-message {
+            color: #ff4444;
+            font-size: 0.9em;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+            animation: shake 0.5s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-10px); }
+            40%, 80% { transform: translateX(10px); }
+        }
+
+        .modal-btn {
+            padding: 12px 35px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.95em;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 5px;
+        }
+
+        .modal-btn.primary {
+            color: #0a0a0f;
+            background: linear-gradient(135deg, #f5a623, #ffd700);
+        }
+
+        .modal-btn.primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(245, 166, 35, 0.4);
+        }
+
+        .modal-btn.secondary {
+            color: #888;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .modal-btn.secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* OTP Modal */
+        .otp-sent-text {
+            color: #4caf50;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .otp-input-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .otp-input {
+            width: 50px;
+            height: 55px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(0, 229, 255, 0.3);
+            border-radius: 10px;
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3em;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .otp-input:focus {
+            border-color: #00e5ff;
+            background: rgba(0, 229, 255, 0.05);
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+        }
+
+        /* Team Joined Modal */
+        .team-joined-modal {
+            background: linear-gradient(145deg, rgba(15, 15, 25, 0.98), rgba(10, 10, 20, 0.99));
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            border-radius: 20px;
+            padding: 40px 30px;
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .team-joined-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #4caf50, #81c784);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+            animation: bounceIn 0.6s ease;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .team-joined-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3em;
+            color: #4caf50;
+            margin-bottom: 5px;
+            letter-spacing: 2px;
+        }
+
+        .team-joined-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5em;
+            color: #f5a623;
+            margin-bottom: 25px;
+        }
+
+        .squad-title {
+            color: #888;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .squad-members {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .squad-member {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(245, 166, 35, 0.1);
+            border-radius: 10px;
+        }
+
+        .squad-member.you {
+            border-color: rgba(0, 229, 255, 0.4);
+            background: rgba(0, 229, 255, 0.05);
+        }
+
+        .member-avatar {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #f5a623, #ff6b35);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1em;
+            color: #0a0a0f;
+            font-weight: 700;
+        }
+
+        .squad-member.you .member-avatar {
+            background: linear-gradient(135deg, #00e5ff, #00bcd4);
+        }
+
+        .member-name {
+            color: #fff;
+            font-size: 1em;
+            font-weight: 600;
+        }
+
+        .member-tag {
+            margin-left: auto;
+            padding: 3px 10px;
+            background: rgba(0, 229, 255, 0.2);
+            border-radius: 20px;
+            color: #00e5ff;
+            font-size: 0.75em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .exit-btn {
+            padding: 14px 50px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1em;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #0a0a0f;
+            background: linear-gradient(135deg, #4caf50, #81c784);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .exit-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(76, 175, 80, 0.4);
+        }
+
+        /* Final Message */
+        .final-message-modal {
+            background: linear-gradient(145deg, rgba(15, 15, 25, 0.98), rgba(10, 10, 20, 0.99));
+            border: 1px solid rgba(245, 166, 35, 0.3);
+            border-radius: 20px;
+            padding: 50px 40px;
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .final-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .final-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5em;
+            color: #f5a623;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .final-text {
+            color: #ccc;
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .final-close-btn {
+            padding: 14px 50px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1em;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #0a0a0f;
+            background: linear-gradient(135deg, #f5a623, #ffd700);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .final-close-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(245, 166, 35, 0.4);
+        }
+
+        /* Confetti */
+        .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10000;
+            overflow: hidden;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            top: -20px;
+            opacity: 0;
+        }
+
+        /* Footer Text */
+        .footer-text {
+            text-align: center;
+            margin-top: 30px;
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 0.8em;
+            letter-spacing: 2px;
+        }
+
+        .footer-text a {
+            color: rgba(245, 166, 35, 0.4);
+            text-decoration: none;
+        }
+
+        /* Validation Styles */
+        .form-group input:invalid:not(:placeholder-shown) {
+            border-color: rgba(255, 68, 68, 0.5);
+        }
+
+        .form-group input:valid:not(:placeholder-shown) {
+            border-color: rgba(76, 175, 80, 0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .title-main {
+                font-size: 1.8em;
+                letter-spacing: 2px;
+            }
+
+            .title-sub {
+                font-size: 1.1em;
+                letter-spacing: 4px;
+            }
+
+            .title-year {
+                font-size: 0.9em;
+                letter-spacing: 6px;
+            }
+
+            .form-container {
+                padding: 25px 18px;
+            }
+
+            .submit-btn {
+                padding: 14px 40px;
+                font-size: 0.95em;
+            }
+
+            .success-title {
+                font-size: 1.5em;
+            }
+
+            .success-message {
+                font-size: 1em;
+            }
+
+            .logo-container img {
+                width: 100px;
+                height: 100px;
+            }
+
+            .success-checkmark {
+                width: 110px;
+                height: 110px;
+            }
+
+            .circle-svg {
+                width: 110px;
+                height: 110px;
+            }
+
+            .circle-svg circle {
+                cx: 55;
+                cy: 55;
+                r: 51;
+                stroke-dasharray: 320;
+                stroke-dashoffset: 320;
+            }
+
+            .circle-fill {
+                width: 100px;
+                height: 100px;
+            }
+
+            .teams-modal {
+                padding: 20px 15px;
+            }
+
+            .team-item {
+                padding: 12px 15px;
+            }
+
+            .otp-input {
+                width: 42px;
+                height: 48px;
+                font-size: 1.1em;
+            }
+        }
+
+        /* Loading animation on button */
+        .submit-btn.loading {
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        .submit-btn.loading .btn-text {
+            visibility: hidden;
+        }
+
+        .submit-btn.loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 24px;
+            height: 24px;
+            border: 3px solid #0a0a0f;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Corner decorations */
+        .corner-decor {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+        }
+
+        .corner-decor.tl {
+            top: 8px;
+            left: 8px;
+            border-top: 2px solid #f5a623;
+            border-left: 2px solid #f5a623;
+        }
+
+        .corner-decor.tr {
+            top: 8px;
+            right: 8px;
+            border-top: 2px solid #f5a623;
+            border-right: 2px solid #f5a623;
+        }
+
+        .corner-decor.bl {
+            bottom: 8px;
+            left: 8px;
+            border-bottom: 2px solid #00e5ff;
+            border-left: 2px solid #00e5ff;
+        }
+
+        .corner-decor.br {
+            bottom: 8px;
+            right: 8px;
+            border-bottom: 2px solid #00e5ff;
+            border-right: 2px solid #00e5ff;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background -->
+    <div class="bg-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+    <div class="grid-bg"></div>
+
+    <!-- Main Content -->
+    <div class="main-container">
+
+        <!-- Header -->
+        <header class="header">
+            <div class="logo-container">
+                <div class="logo-ring"></div>
+                <div class="logo-ring"></div>
+                <img src="12345.jpg" alt="BGMI Logo" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22130%22 height=%22130%22 viewBox=%220 0 130 130%22%3E%3Crect fill=%22%231a1a2e%22 width=%22130%22 height=%22130%22 rx=%2265%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22%23f5a623%22 font-family=%22Orbitron%22 font-size=%2218%22 font-weight=%22bold%22%3EBGMI%3C/text%3E%3C/svg%3E'">
+            </div>
+
+            <h1 class="title-main">BGMI E-Sports</h1>
+            <h2 class="title-sub">Circle Bhind</h2>
+            <p class="title-year">2026</p>
+
+            <div class="divider"></div>
+
+            <div class="tournament-badge">Official Tournament</div>
+        </header>
+
+        <!-- Form -->
+        <div class="form-container">
+            <div class="corner-decor tl"></div>
+            <div class="corner-decor tr"></div>
+            <div class="corner-decor bl"></div>
+            <div class="corner-decor br"></div>
+
+            <h3 class="form-title">🎮 Player Registration</h3>
+
+            <form id="registrationForm" autocomplete="off">
+
+                <div class="form-row">
+                    <!-- First Name -->
+                    <div class="form-group">
+                        <label><span class="icon">👤</span>First Name <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <input type="text" name="firstName" id="firstName" placeholder="Enter your first name" required minlength="2">
+                            <div class="input-line"></div>
+                        </div>
+                    </div>
+
+                    <!-- Last Name -->
+                    <div class="form-group">
+                        <label><span class="icon">👤</span>Last Name <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <input type="text" name="lastName" id="lastName" placeholder="Enter your last name" required minlength="2">
+                            <div class="input-line"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <!-- UID -->
+                    <div class="form-group">
+                        <label><span class="icon">🆔</span>UID <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <input type="text" name="uid" placeholder="Enter 10-digit BGMI UID" required pattern="[0-9]{10}" maxlength="10" title="UID must be exactly 10 digits">
+                            <div class="input-line"></div>
+                        </div>
+                    </div>
+
+                    <!-- Player Level -->
+                    <div class="form-group">
+                        <label><span class="icon">⭐</span>Player Level <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <input type="number" name="level" placeholder="e.g. 75 (Max 100)" required min="1" max="100">
+                            <div class="input-line"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <!-- Highest Tier -->
+                    <div class="form-group">
+                        <label><span class="icon">🏆</span>Highest Tier <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <select name="tier" required>
+                                <option value="" disabled selected>Select Your Tier</option>
+                                <option value="Bronze">🥉 Bronze</option>
+                                <option value="Silver">🥈 Silver</option>
+                                <option value="Gold">🥇 Gold</option>
+                                <option value="Platinum">💎 Platinum</option>
+                                <option value="Diamond">💠 Diamond</option>
+                                <option value="Crown">👑 Crown</option>
+                                <option value="Ace">🔥 Ace</option>
+                                <option value="Ace Master">⚡ Ace Master</option>
+                                <option value="Ace Dominator">💀 Ace Dominator</option>
+                                <option value="Conqueror">🏅 Conqueror</option>
+                            </select>
+                            <div class="input-line"></div>
+                        </div>
+                    </div>
+
+                    <!-- Alternate UID -->
+                    <div class="form-group">
+                        <label><span class="icon">🔄</span>Alternate UID</label>
+                        <div class="input-wrapper">
+                            <input type="text" name="alt_uid" placeholder="Optional (10 digits)" pattern="[0-9]{10}" maxlength="10">
+                            <div class="input-line"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <!-- Pincode -->
+                    <div class="form-group">
+                        <label><span class="icon">📍</span>Pincode <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <input type="text" name="pincode" placeholder="e.g. 477557" required pattern="[0-9]{6}" maxlength="6" title="Enter valid 6-digit pincode">
+                            <div class="input-line"></div>
+                        </div>
+                    </div>
+
+                    <!-- Village/City -->
+                    <div class="form-group">
+                        <label><span class="icon">🏘️</span>Village / City <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <input type="text" name="city" placeholder="Enter your village or city" required>
+                            <div class="input-line"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <!-- Township -->
+                    <div class="form-group">
+                        <label><span class="icon">🏛️</span>Township <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <input type="text" name="township" placeholder="Enter your township" required>
+                            <div class="input-line"></div>
+                        </div>
+                    </div>
+
+                    <!-- Phone No -->
+                    <div class="form-group">
+                        <label><span class="icon">📱</span>Phone No. <span class="required">*</span></label>
+                        <div class="input-wrapper">
+                            <input type="tel" name="phone" placeholder="e.g. 9876543210" required pattern="[6-9][0-9]{9}" maxlength="10" title="Enter valid 10-digit mobile number">
+                            <div class="input-line"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="form-group full-width">
+                    <label><span class="icon">📧</span>E-Mail Address (Gmail Only) <span class="required">*</span></label>
+                    <div class="input-wrapper">
+                        <input type="email" name="email" id="email" placeholder="yourname@gmail.com" required pattern="[a-zA-Z0-9._%+-]+@gmail\.com$" title="Please enter a valid Gmail address (@gmail.com)">
+                        <div class="input-line"></div>
+                    </div>
+                </div>
+
+                <!-- Submit -->
+                <div class="submit-section">
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <span class="btn-shine"></span>
+                        <span class="btn-text">🎯 Register Now</span>
+                    </button>
+                </div>
+
+            </form>
+        </div>
+
+        <p class="footer-text">© 2026 BGMI E-Sports Circle Bhind | All Rights Reserved</p>
+
+    </div>
+
+    <!-- Success Overlay -->
+    <div class="overlay" id="successOverlay">
+        <div class="success-container">
+            <div class="success-checkmark">
+                <div class="check-icon">
+                    <div class="icon-circle">
+                        <svg class="circle-svg">
+                            <circle cx="70" cy="70" r="66"></circle>
+                        </svg>
+                    </div>
+                    <div class="circle-fill"></div>
+                    <svg class="checkmark-svg" viewBox="0 0 60 60">
+                        <polyline points="12,30 25,44 48,18"></polyline>
+                    </svg>
+                    <div class="ripple"></div>
+                    <div class="ripple"></div>
+                    <div class="ripple"></div>
+                    <div class="sparkle"></div>
+                    <div class="sparkle"></div>
+                    <div class="sparkle"></div>
+                    <div class="sparkle"></div>
+                    <div class="sparkle"></div>
+                    <div class="sparkle"></div>
+                    <div class="sparkle"></div>
+                    <div class="sparkle"></div>
+                </div>
+            </div>
+
+            <h2 class="success-title">🎉 Congratulations! 🎉</h2>
+            <p class="success-name" id="successName"></p>
+            
+            <div class="session-id-container">
+                <p class="session-label">Session ID</p>
+                <p class="session-id" id="sessionId"></p>
+            </div>
+
+            <p class="success-message">
+                Your registration is successful!<br>
+                <span>You'll Be Contacted Soon</span>
+            </p>
+            <p class="good-luck">🔥 Good Luck For Your Matches! 🔥</p>
+
+            <button class="join-teams-btn" id="joinTeamsBtn">🎮 Join Teams</button>
+        </div>
+    </div>
+
+    <!-- Teams List Overlay -->
+    <div class="overlay" id="teamsOverlay">
+        <div class="teams-modal">
+            <button class="close-modal-btn" id="closeTeamsBtn">✕</button>
+            <h3 class="teams-modal-title">🏆 Available Teams</h3>
+            <div class="teams-list" id="teamsList">
+                <!-- Teams will be populated by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Password Modal Overlay -->
+    <div class="overlay" id="passwordOverlay">
+        <div class="password-modal">
+            <button class="close-modal-btn" id="closePasswordBtn">✕</button>
+            <h3>🔐 Request to Join</h3>
+            <p class="team-name-display" id="selectedTeamName"></p>
+            
+            <div class="password-input-group">
+                <label>Enter Team Password</label>
+                <input type="password" id="teamPassword" placeholder="••••••••••">
+                <p class="error-message" id="passwordError">❌ Incorrect Password! Access Denied.</p>
+            </div>
+
+            <div>
+                <button class="modal-btn secondary" id="cancelPasswordBtn">Cancel</button>
+                <button class="modal-btn primary" id="submitPasswordBtn">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- OTP Modal Overlay -->
+    <div class="overlay" id="otpOverlay">
+        <div class="password-modal">
+            <button class="close-modal-btn" id="closeOtpBtn">✕</button>
+            <h3>📲 OTP Verification</h3>
+            <p class="team-name-display">Papa Players</p>
+            
+            <p class="otp-sent-text">✅ OTP Sent to Team Owner</p>
+
+            <div class="otp-input-container">
+                <input type="text" class="otp-input" maxlength="1" id="otp1">
+                <input type="text" class="otp-input" maxlength="1" id="otp2">
+                <input type="text" class="otp-input" maxlength="1" id="otp3">
+                <input type="text" class="otp-input" maxlength="1" id="otp4">
+                <input type="text" class="otp-input" maxlength="1" id="otp5">
+                <input type="text" class="otp-input" maxlength="1" id="otp6">
+            </div>
+
+            <p class="error-message" id="otpError">❌ Invalid OTP! Please try again.</p>
+
+            <div>
+                <button class="modal-btn secondary" id="cancelOtpBtn">Cancel</button>
+                <button class="modal-btn primary" id="verifyOtpBtn">Verify OTP</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Team Joined Success Overlay -->
+    <div class="overlay" id="teamJoinedOverlay">
+        <div class="team-joined-modal">
+            <div class="team-joined-icon">✓</div>
+            <h3 class="team-joined-title">Congratulations!</h3>
+            <p class="team-joined-name">You Successfully Joined<br><span style="color: #f5a623;">Papa Players</span></p>
+
+            <p class="squad-title">👥 Your Squad</p>
+            <div class="squad-members" id="squadMembers">
+                <!-- Will be populated by JS -->
+            </div>
+
+            <button class="exit-btn" id="exitTeamBtn">✓ Done - Exit</button>
+        </div>
+    </div>
+
+    <!-- Final Message Overlay -->
+    <div class="overlay" id="finalOverlay">
+        <div class="final-message-modal">
+            <div class="final-icon">🎮</div>
+            <h3 class="final-title">Thank You!</h3>
+            <p class="final-text">
+                Your registration is complete.<br>
+                <span style="color: #f5a623; font-weight: 700;">We'll Contact You Soon!</span><br><br>
+                Get ready for the tournament! 🏆
+            </p>
+            <button class="final-close-btn" id="finalCloseBtn">Close</button>
+        </div>
+    </div>
+
+    <!-- Confetti Container -->
+    <div class="confetti-container" id="confettiContainer"></div>
+
+    <script>
+        // Data
+        let userData = {
+            firstName: '',
+            lastName: '',
+            fullName: ''
+        };
+
+        const teams = [
+            { name: "Savage Squad", leader: "Aman", icon: "🔥" },
+            { name: "No Mercy Clan", leader: "Rohan", icon: "💀" },
+            { name: "Headshot Hunters", leader: "Ananya", icon: "🎯" },
+            { name: "Desi Destroyers", leader: "Kunal", icon: "💥" },
+            { name: "Alpha Killers", leader: "Sarthak", icon: "🐺" },
+            { name: "Toxic Titans", leader: "Yash", icon: "☠️" },
+            { name: "One Tap Army", leader: "Mohit", icon: "👆" },
+            { name: "Nightmare Esports", leader: "Aditya", icon: "👻" },
+            { name: "Clutch Gods", leader: "Riya", icon: "⚡" },
+            { name: "Lag-Free Legends", leader: "Harsh", icon: "🚀" },
+            { name: "Game Over Gang", leader: "Ankit", icon: "🎮" },
+            { name: "Rage Quiters", leader: "Pranav", icon: "😤" },
+            { name: "Boom Headshot", leader: "Ayaan", icon: "💣" },
+            { name: "Desi Aimbots", leader: "Shivam", icon: "🤖" },
+            { name: "Trigger Happy", leader: "Abhishek", icon: "🔫" },
+            { name: "Loot & Shoot", leader: "Neha", icon: "📦" },
+            { name: "Zone Campers", leader: "Kartik", icon: "🏕️" },
+            { name: "Rush B Boys", leader: "Sahil", icon: "🏃" },
+            { name: "Kill Confirmed", leader: "Tanish", icon: "✅" },
+            { name: "Pro Noobs", leader: "Lakshya", icon: "🎭" },
+            { name: "Dark Lobby", leader: "Aryan", icon: "🌑" },
+            { name: "Final Circle Kings", leader: "Pooja", icon: "👑" },
+            { name: "Mic On Mafia", leader: "Ayush", icon: "🎤" },
+            { name: "Full Power Play", leader: "Manan", icon: "⚡" },
+            { name: "Desi Esports Union", leader: "Ritesh", icon: "🇮🇳" },
+            { name: "Papa Players", leader: "Rudransh", icon: "👨‍👦" }
+        ];
+
+        // Elements
+        const form = document.getElementById('registrationForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const successOverlay = document.getElementById('successOverlay');
+        const teamsOverlay = document.getElementById('teamsOverlay');
+        const passwordOverlay = document.getElementById('passwordOverlay');
+        const otpOverlay = document.getElementById('otpOverlay');
+        const teamJoinedOverlay = document.getElementById('teamJoinedOverlay');
+        const finalOverlay = document.getElementById('finalOverlay');
+        const confettiContainer = document.getElementById('confettiContainer');
+
+        // Generate Random Session ID
+        function generateSessionId(firstLetter) {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let result = '';
+            for (let i = 0; i < 12; i++) {
+                result += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return result + '-' + firstLetter.toUpperCase();
+        }
+
+        // Form Submit
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Validate Gmail
+            const email = document.getElementById('email').value;
+            if (!email.endsWith('@gmail.com')) {
+                alert('Please enter a valid Gmail address (@gmail.com only)');
+                return;
+            }
+
+            userData.firstName = document.getElementById('firstName').value.trim();
+            userData.lastName = document.getElementById('lastName').value.trim();
+            userData.fullName = userData.firstName + ' ' + userData.lastName;
+
+            submitBtn.classList.add('loading');
+
+            setTimeout(() => {
+                submitBtn.classList.remove('loading');
+                showSuccess();
+            }, 1500);
+        });
+
+        function showSuccess() {
+            // Set user name
+            document.getElementById('successName').textContent = userData.fullName;
+            
+            // Generate and set Session ID
+            const sessionId = generateSessionId(userData.firstName.charAt(0));
+            document.getElementById('sessionId').textContent = sessionId;
+
+            successOverlay.classList.add('active');
+            createConfetti();
+            playSuccessSound();
+
+            if (navigator.vibrate) {
+                navigator.vibrate([100, 50, 100, 50, 200]);
+            }
+        }
+
+        function playSuccessSound() {
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                function playTone(freq, start, duration) {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.frequency.value = freq;
+                    osc.type = 'sine';
+                    gain.gain.setValueAtTime(0.15, audioCtx.currentTime + start);
+                    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + start + duration);
+                    osc.start(audioCtx.currentTime + start);
+                    osc.stop(audioCtx.currentTime + start + duration);
+                }
+                playTone(523, 0.0, 0.3);
+                playTone(659, 0.15, 0.3);
+                playTone(784, 0.3, 0.5);
+                playTone(1047, 0.5, 0.8);
+            } catch(e) {}
+        }
+
+        function createConfetti() {
+            const colors = ['#f5a623', '#ff6b35', '#ffd700', '#4caf50', '#00e5ff', '#ff4444', '#e040fb', '#fff'];
+            const shapes = ['square', 'circle', 'triangle'];
+
+            for (let i = 0; i < 80; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.classList.add('confetti-piece');
+
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+                    const shape = shapes[Math.floor(Math.random() * shapes.length)];
+                    const size = Math.random() * 10 + 6;
+                    const startX = Math.random() * window.innerWidth;
+                    const drift = (Math.random() - 0.5) * 200;
+                    const duration = Math.random() * 2 + 3;
+                    const rotation = Math.random() * 720;
+
+                    confetti.style.left = startX + 'px';
+                    confetti.style.width = size + 'px';
+                    confetti.style.height = size + 'px';
+                    confetti.style.backgroundColor = color;
+                    confetti.style.opacity = '1';
+
+                    if (shape === 'circle') {
+                        confetti.style.borderRadius = '50%';
+                    } else if (shape === 'triangle') {
+                        confetti.style.width = '0';
+                        confetti.style.height = '0';
+                        confetti.style.backgroundColor = 'transparent';
+                        confetti.style.borderLeft = (size/2) + 'px solid transparent';
+                        confetti.style.borderRight = (size/2) + 'px solid transparent';
+                        confetti.style.borderBottom = size + 'px solid ' + color;
+                    }
+
+                    confetti.style.animation = `confettiFall ${duration}s ease-in forwards`;
+                    confetti.style.setProperty('--drift', drift + 'px');
+                    confetti.style.setProperty('--rotation', rotation + 'deg');
+
+                    confettiContainer.appendChild(confetti);
+                    setTimeout(() => confetti.remove(), duration * 1000);
+                }, i * 40);
+            }
+        }
+
+        // Confetti animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes confettiFall {
+                0% { transform: translateY(0) translateX(0) rotate(0deg) scale(1); opacity: 1; }
+                25% { opacity: 1; }
+                100% { transform: translateY(100vh) translateX(var(--drift)) rotate(var(--rotation)) scale(0.3); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Join Teams Button
+        document.getElementById('joinTeamsBtn').addEventListener('click', function() {
+            successOverlay.classList.remove('active');
+            showTeamsList();
+        });
+
+        function showTeamsList() {
+            const teamsList = document.getElementById('teamsList');
+            teamsList.innerHTML = '';
+
+            teams.forEach(team => {
+                const teamItem = document.createElement('div');
+                teamItem.classList.add('team-item');
+                teamItem.innerHTML = `
+                    <div class="team-info">
+                        <div class="team-icon">${team.icon}</div>
+                        <div class="team-details">
+                            <h4>${team.name}</h4>
+                            <p>Lead by ${team.leader}</p>
+                        </div>
+                    </div>
+                    <div class="team-lock">
+                        <span class="lock-icon">🔒</span>
+                        <span>Request</span>
+                    </div>
+                `;
+                teamItem.addEventListener('click', () => openPasswordModal(team));
+                teamsList.appendChild(teamItem);
+            });
+
+            teamsOverlay.classList.add('active');
+        }
+
+        // Close Teams Modal
+        document.getElementById('closeTeamsBtn').addEventListener('click', function() {
+            teamsOverlay.classList.remove('active');
+            successOverlay.classList.add('active');
+        });
+
+        let selectedTeam = null;
+
+        function openPasswordModal(team) {
+            selectedTeam = team;
+            document.getElementById('selectedTeamName').textContent = team.name;
+            document.getElementById('teamPassword').value = '';
+            document.getElementById('passwordError').classList.remove('show');
+            teamsOverlay.classList.remove('active');
+            passwordOverlay.classList.add('active');
+        }
+
+        // Password Modal Buttons
+        document.getElementById('closePasswordBtn').addEventListener('click', function() {
+            passwordOverlay.classList.remove('active');
+            teamsOverlay.classList.add('active');
+        });
+
+        document.getElementById('cancelPasswordBtn').addEventListener('click', function() {
+            passwordOverlay.classList.remove('active');
+            teamsOverlay.classList.add('active');
+        });
+
+        document.getElementById('submitPasswordBtn').addEventListener('click', function() {
+            const password = document.getElementById('teamPassword').value;
+            
+            if (selectedTeam.name === 'Papa Players' && password === 'rudra@banthari0014') {
+                passwordOverlay.classList.remove('active');
+                openOtpModal();
+            } else {
+                document.getElementById('passwordError').classList.add('show');
+                setTimeout(() => {
+                    document.getElementById('passwordError').classList.remove('show');
+                }, 3000);
+            }
+        });
+
+        // OTP Modal
+        function openOtpModal() {
+            // Clear OTP inputs
+            for (let i = 1; i <= 6; i++) {
+                document.getElementById('otp' + i).value = '';
+            }
+            document.getElementById('otpError').classList.remove('show');
+            otpOverlay.classList.add('active');
+            document.getElementById('otp1').focus();
+        }
+
+        // OTP Input auto-focus
+        const otpInputs = document.querySelectorAll('.otp-input');
+        otpInputs.forEach((input, index) => {
+            input.addEventListener('input', function() {
+                if (this.value.length === 1 && index < otpInputs.length - 1) {
+                    otpInputs[index + 1].focus();
+                }
+            });
+            input.addEventListener('keydown', function(e) {
+                if (e.key === 'Backspace' && this.value.length === 0 && index > 0) {
+                    otpInputs[index - 1].focus();
+                }
+            });
+        });
+
+        document.getElementById('closeOtpBtn').addEventListener('click', function() {
+            otpOverlay.classList.remove('active');
+            teamsOverlay.classList.add('active');
+        });
+
+        document.getElementById('cancelOtpBtn').addEventListener('click', function() {
+            otpOverlay.classList.remove('active');
+            teamsOverlay.classList.add('active');
+        });
+
+        document.getElementById('verifyOtpBtn').addEventListener('click', function() {
+            let otp = '';
+            for (let i = 1; i <= 6; i++) {
+                otp += document.getElementById('otp' + i).value;
+            }
+
+            if (otp === '142439') {
+                otpOverlay.classList.remove('active');
+                showTeamJoined();
+            } else {
+                document.getElementById('otpError').classList.add('show');
+                setTimeout(() => {
+                    document.getElementById('otpError').classList.remove('show');
+                }, 3000);
+            }
+        });
+
+        // Team Joined Success
+        function showTeamJoined() {
+            const squadMembers = document.getElementById('squadMembers');
+            const members = [
+                { name: 'Rudransh Singh', isYou: false },
+                { name: 'Abhishek Jadon', isYou: false },
+                { name: userData.fullName, isYou: true },
+                { name: 'Jayesh Solanki', isYou: false }
+            ];
+
+            squadMembers.innerHTML = '';
+            members.forEach(member => {
+                const div = document.createElement('div');
+                div.classList.add('squad-member');
+                if (member.isYou) div.classList.add('you');
+                
+                const initials = member.name.split(' ').map(n => n[0]).join('').toUpperCase();
+                
+                div.innerHTML = `
+                    <div class="member-avatar">${initials}</div>
+                    <span class="member-name">${member.name}</span>
+                    ${member.isYou ? '<span class="member-tag">You</span>' : ''}
+                `;
+                squadMembers.appendChild(div);
+            });
+
+            teamJoinedOverlay.classList.add('active');
+            createConfetti();
+            playSuccessSound();
+        }
+
+        // Exit Team
+        document.getElementById('exitTeamBtn').addEventListener('click', function() {
+            teamJoinedOverlay.classList.remove('active');
+            finalOverlay.classList.add('active');
+        });
+
+        // Final Close
+        document.getElementById('finalCloseBtn').addEventListener('click', function() {
+            finalOverlay.classList.remove('active');
+            form.reset();
+        });
+
+        // Input animations
+        document.querySelectorAll('.form-group input, .form-group select').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.closest('.form-group').querySelector('label').style.color = '#f5a623';
+            });
+            input.addEventListener('blur', function() {
+                this.closest('.form-group').querySelector('label').style.color = '#aaa';
+            });
+        });
+    </script>
+
+</body>
+</html>
